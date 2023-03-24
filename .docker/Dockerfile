@@ -27,6 +27,14 @@ RUN update-alternatives --set php /usr/bin/php8.2
 RUN apt-get install -y vim wget tree unzip gnupg2 patch htop make redis
 RUN pecl i apcu
 
+# Add our drupal cron shell script
+ADD .docker/drupal_cron.sh /root/drupal_cron.sh
+RUN chmod 0644 /root/drupal_cron.sh
+
+# Install cron and run drupal cron every 3 hours
+RUN apt-get install -y cron
+RUN crontab -l | { cat; echo "* */3 * * * bash /root/drupal_cron.sh\n0 0 * * * dr -r="; } | crontab -
+
 # Install composer from oficial image
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -66,7 +74,7 @@ RUN cd ~ \
   && echo source ~/.bash_aliases >> .bashrc \
   && echo source ~/.ps1_color >> .bashrc
 
-RUN echo alias dr='drush' >> ~/.bash_aliases
+RUN echo -e "\nalias dr='drush'" >> ~/.bash_aliases
 
 COPY .docker/apache-drupal.conf /etc/apache2/sites-enabled/000-default.conf
 COPY .docker/php.ini /etc/php/8.2/apache2/conf.d/
@@ -79,4 +87,4 @@ WORKDIR /app/web
 RUN mkdir -p ../private ../config/sync sites/default/files/translations
 RUN chown www-data -R ../private ../config sites/default/files/translations
 
-CMD service redis-server start;service php8.2-fpm start;apachectl -D FOREGROUND
+CMD cron;service redis-server start;service php8.2-fpm start;apachectl -D FOREGROUND
