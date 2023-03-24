@@ -1,0 +1,9 @@
+.form-wrapper.accordion {
+  .accordion-item {
+    @extend .my-3;
+
+    h2 {
+      @extend h6;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+element_embed.dialog:
+  path: '/element-embed/dialog/{editor}/{embed_button}'
+  defaults:
+    _form: '\Drupal\element_embed\Form\ElementEmbedDialog'
+    _title: 'Embed Element'
+  requirements:
+    _embed_button_editor_access: 'TRUE'

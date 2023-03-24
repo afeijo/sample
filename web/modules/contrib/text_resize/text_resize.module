@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Creates a small block with jQuery links that resize text in specified tag.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function text_resize_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.text_resize':
+      $output = '<p>' . t('The Text Resize module creates a block on the page that can be used by your site visitors to quickly and easily adjust the sizing of text as it displays for them.  In order to enable the functionality of the Text Resize module, you will need to make sure that you have enabled the Text Resize block on the <a href="!block">blocks page</a>. You will also probably want to configure the behavior of the module at the administration pages listed at the bottom of this page.', ['!block' => (\Drupal::moduleHandler()->moduleExists('block')) ? Url::fromRoute('block.admin_display')->toString() : '#']) . '</p>';
+      $output .= '<h2>' . t('Changing How Text Resize Looks') . '</h2>';
+      $output .= '<h3>' . t('Method 1: Just CSS') . '</h3>';
+      $output .= '<p>' . t("Text Resize creates two stylized hyperlinks on the page (and a third if you enable the reset button option). You can add new styles to your own theme's stylesheet that will override the default CSS styles produced by Text Resize. The ids you\'ll want to add and modify in your stylesheet are:") . '</p>';
+      $output .= '<ul><li>#text_resize_increase</li>';
+      $output .= '<li>#text_resize_decrease</li>';
+      $output .= '<li>#text_resize_reset ' . t("(if you've chosen to use the reset button option)") . '</li></ul>';
+      $output .= '<h3>' . t('Method 2: A Theme Function') . '</h3>';
+      $output .= '<p>' . t("If you need to change the HTML that is produced by Text Resize in some way, you can create a small function in your modules's .module file. An example is below:") . '</p>';
+      $output .= '<p><code>function template_preprocess_text_resize_block(&$variables) {<br/>&nbsp;&nbsp;$variables[\'content\'] = array(<br/>&nbsp;&nbsp;&nbsp;&nbsp;\'output\' => t(\'&lt;a href="javascript:;" class="changer" id="text_resize_decrease"&gt;&lt;sup&gt;-&lt;/sup&gt;A&lt;/a&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="javascript:;" class="changer" id="text_resize_increase"&gt;&lt;sup&gt;+&lt;/sup&gt;A&lt;/a&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;);<br />}</code></p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function text_resize_theme() {
+  return [
+    'text_resize_block' => [
+      'render element' => 'content',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for text resizer templates.
+ *
+ * Default template: text-resize-block.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - content: The content to print.
+ */
+function template_preprocess_text_resize_block(array &$variables) {
+  $config = \Drupal::config('text_resize.settings');
+
+  if ($config->get('text_resize_reset_button')) {
+    $variables['content'] = [
+      'output' => t('<a href="javascript:;" class="changer" id="text_resize_decrease"><sup>-</sup>A</a> <a href="javascript:;" class="changer" id="text_resize_reset">A</a> <a href="javascript:;" class="changer" id="text_resize_increase"><sup>+</sup>A</a><div id="text_resize_clear"></div>'),
+    ];
+  }
+  else {
+    $variables['content'] = [
+      'output' => t('<a href="javascript:;" class="changer" id="text_resize_decrease"><sup>-</sup>A</a> <a href="javascript:;" class="changer" id="text_resize_increase"><sup>+</sup>A</a><div id="text_resize_clear"></div>'),
+    ];
+  }
+
+  $variables['#attached']['drupalSettings']['text_resize'] = [
+    'text_resize_scope' => $config->get('text_resize_scope'),
+    'text_resize_minimum' => $config->get('text_resize_minimum'),
+    'text_resize_maximum' => $config->get('text_resize_maximum'),
+    'text_resize_line_height_allow' => $config->get('text_resize_line_height_allow'),
+    'text_resize_line_height_min' => $config->get('text_resize_line_height_min'),
+    'text_resize_line_height_max' => $config->get('text_resize_line_height_max'),
+  ];
+
+  \Drupal::service('renderer')->addCacheableDependency($variables, $config);
+}

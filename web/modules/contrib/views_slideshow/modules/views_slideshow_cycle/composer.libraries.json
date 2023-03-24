@@ -1,0 +1,59 @@
+{
+    "name": "drupal/views_slideshow_cycle",
+    "description": "Describes relationships between entities.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/views_slideshow",
+    "authors": [
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/views_slideshow",
+        "source": "https://git.drupalcode.org/project/views_slideshow"
+    },
+    "require": {
+        "composer/installers": "*",
+        "douglascrockford/json2": "*",
+        "malsup/jquery.cycle": "*",
+        "tobia/jquery.pause": "*"
+    },
+    "repositories": {
+      "malsup/jquery.cycle": {
+        "type": "package",
+        "package": {
+          "name": "malsup/jquery.cycle",
+          "version": "3.0.3-a",
+          "type":"drupal-library",
+          "dist": {
+            "url": "https://github.com/malsup/cycle/archive/refs/tags/3.0.3-a.tar.gz",
+            "type": "tar"
+          }
+        }
+      },
+      "douglascrockford/json2": {
+        "type": "package",
+        "package": {
+          "name": "douglascrockford/json2",
+          "version": "dev-master",
+          "type":"drupal-library",
+          "source": {
+            "url": "https://github.com/douglascrockford/JSON-js",
+            "type": "git",
+            "reference": "master"
+          }
+        }
+      },
+      "tobia/jquery.pause": {
+        "type": "package",
+        "package": {
+          "name": "tobia/jquery.pause",
+          "version": "dev-master",
+          "type":"drupal-library",
+          "source": {
+            "url": "https://github.com/tobia/Pause",
+            "type": "git",
+            "reference": "master"
+          }
+        }
+      }
+    }
+}

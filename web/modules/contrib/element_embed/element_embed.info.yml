@@ -1,0 +1,12 @@
+name: Element Embed
+type: module
+description: 'Provides ability to embed render elements in WYSIWYG editors.'
+core_version_requirement: ^9.3 || ^10
+package: Filters
+dependencies:
+  - embed:embed
+
+# Information added by Drupal.org packaging script on 2022-09-06
+version: '8.x-1.0-alpha8'
+project: 'element_embed'
+datestamp: 1662487899

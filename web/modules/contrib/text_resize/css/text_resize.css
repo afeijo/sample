@@ -1,0 +1,48 @@
+/**
+ * @file
+ * Text resizer styling.
+ */
+
+a#text_resize_increase {
+  float: right;
+  display: block;
+  margin: 6px 0 0 0;
+  width: 28px;
+  height: 27px;
+  background: url(../images/aBig.gif) no-repeat 0 0;
+  outline: none;
+  text-indent: -9000px;
+  cursor: pointer;
+}
+a#text_resize_reset {
+  float: right;
+  display: block;
+  width: 25px;
+  height: 24px;
+  margin: 9px 0 0 3px;
+  background: url(../images/a_reset.gif) no-repeat 0 0;
+  outline: none;
+  text-indent: -9000px;
+  cursor: pointer;
+}
+a#text_resize_decrease {
+  float: right;
+  display: block;
+  margin: 12px 0 0 3px;
+  width: 23px;
+  height: 21px;
+  background: url(../images/aSmall.gif) no-repeat 0 0;
+  outline: none;
+  text-indent: -9000px;
+  cursor: pointer;
+}
+#text_resize_clear {
+  clear: both;
+}
+
+.block-text-resize .contextual {
+  right: -20px; /* LTR */
+}
+.block-text-resize [dir="rtl"] .contextual {
+  left: -20px;
+}

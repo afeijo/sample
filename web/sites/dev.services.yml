@@ -1,0 +1,27 @@
+# Local development services.
+#
+# To activate this feature, follow the instructions at the top of the
+# 'example.settings.local.php' file, which sits next to this file.
+parameters:
+  http.response.debug_cacheability_headers: false
+  twig.config:
+    debug: true
+    cache: false
+    auto_reload: true
+  cors.config:
+    enabled: false
+    # Specify allowed headers, like 'x-allowed-header'.
+    allowedHeaders: ['x-csrf-token','authorization','content-type','accept','origin','x-requested-with', 'access-control-allow-origin','x-allowed-header','*']
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
+    allowedMethods: ['*']
+    # Configure requests allowed from specific origins.
+    allowedOrigins: ['http://localhost/','http://sealine.local', 'http://seahub.local', '*']
+    # Sets the Access-Control-Expose-Headers header.
+    exposedHeaders: false
+    # Sets the Access-Control-Max-Age header.
+    maxAge: false
+    # Sets the Access-Control-Allow-Credentials header.
+    supportsCredentials: true
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory

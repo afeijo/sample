@@ -1,0 +1,36 @@
+version: '3.5'
+services:
+  drupal:
+    container_name: ${PHP}
+    hostname: ${PHP}
+    build:
+      dockerfile: .docker/Dockerfile
+      context: ./
+    ports:
+      - ${PORT}
+    volumes:
+      - .:/app/
+    restart: unless-stopped
+    environment:
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_HOSTNAME: ${MYSQL_HOSTNAME}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - db
+  db:
+    container_name: ${PHP}-db
+    image: mariadb:latest
+    ports:
+        - 3306
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - "/var/lib/mysql"
+    restart: unless-stopped

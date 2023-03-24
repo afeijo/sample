@@ -1,0 +1,11 @@
+text_resize.resize:
+  js:
+    js/text_resize.js:
+      minified: true
+  css:
+    theme:
+      css/text_resize.css: {}
+  dependencies:
+    - core/once
+    - core/drupal
+    - core/drupalSettings

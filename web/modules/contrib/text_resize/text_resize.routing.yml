@@ -1,0 +1,6 @@
+text_resize_settings:
+  path: '/admin/config/user-interface/text_resize'
+  defaults:
+    _form: 'Drupal\text_resize\Form\TextResizeSettingsForm'
+  requirements:
+    _permission: 'administer text_resize'

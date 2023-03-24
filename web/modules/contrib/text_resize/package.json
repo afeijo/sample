@@ -1,0 +1,10 @@
+{
+  "private": "true",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^4.0.2"
+  }
+}

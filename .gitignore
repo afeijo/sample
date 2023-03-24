@@ -1,0 +1,19 @@
+# Ignore core files
+vendor
+web/core
+
+# Ignore configuration files that may contain sensitive information.
+web/sites/*/settings.local.php
+
+# Ignore paths that contain user-generated content.
+web/sites/*/files
+
+# Ignore this stuff too
+*.css.map
+node_modules
+.sass-cache
+private*
+tmp
+.env
+.vscode
+*.ds_store

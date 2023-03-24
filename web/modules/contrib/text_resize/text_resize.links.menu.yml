@@ -1,0 +1,6 @@
+text_resize.list:
+  title: 'Text resize'
+  description: 'Configure text resize setting.'
+  route_name: text_resize_settings
+  weight: 10
+  parent: system.admin_config_ui
