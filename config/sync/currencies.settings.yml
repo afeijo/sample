@@ -1,0 +1,8 @@
+currencies:
+  USD: USD
+  EUR: EUR
+  BRL: BRL
+  GBP: GBP
+  JPY: JPY
+default_currency: BRL
+api_key: MJwajByKJnTzn7Gy6tfmxHHG5r4LCSez

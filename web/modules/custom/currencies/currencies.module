@@ -1,0 +1,76 @@
+<?php
+
+use Drupal\Component\Serialization\Json;
+
+// Implements hook_cron to update currencies rates.
+function currencies_cron() {
+  // if currencies db table is empty, download all symbols from fixer.io
+  $query = \Drupal::database()->select('currencies', 'c');
+  $query->fields('c', ['symbol', 'updated']);
+  // $query->condition('updated', time() - 86400, '<');
+  $query->range(0, 1);
+  $rows = $query->execute()->fetchAll();
+  if (count($rows) == 0) {
+    currenciesDownload();
+  }
+  elseif (reset($rows)['updated']+86400 < time()) {
+    currenciesDownload();
+  }
+}
+
+/**
+ * Implements currenciesDownload, fetch symbols and rates from fixer.io
+ * @return void|null
+ */
+function currenciesDownload() {
+  $settings = \Drupal::config('currencies.settings')->getRawData();
+  $url = 'https://api.apilayer.com/fixer/';
+  $api = $settings['api_key'];
+  $base = $settings['default_currency'];
+  $client = new \GuzzleHttp\Client();
+
+  $options = [
+    'query' => [
+      // 'symbols' => $currencies,
+      'base' => $base,
+    ],
+    'headers' => [
+      'Content-Type' => 'text/plain',
+      'apikey' => $api,
+    ],
+  ];
+
+  // download all symbols from fixer.io
+  $endpoint = 'symbols';
+  $response = $client->request('GET', $url . $endpoint, $options);
+  $data = json::decode($response->getBody()->getContents());
+
+  if ($data['success']) {
+    foreach ($data['symbols'] as $key => $value) {
+      $query = \Drupal::database()->merge('currencies');
+      $query->key(['symbol' => $key]);
+      $query->fields(['name' => $value, 'updated' => time()]);
+      $query->execute();
+    }
+  } else {
+    return $data;
+  }
+
+  // download all rates from fixer.io
+  $endpoint = 'latest';
+  $response = $client->request('GET', $url . $endpoint, $options);
+  $data = json::decode($response->getBody()->getContents());
+
+  if ($data['success']) {
+    $fields = ['updated' => $data['timestamp']];
+    foreach ($data['rates'] as $key => $value) {
+      $fields['rate'] = $value;
+      $query = \Drupal::database()->update('currencies');
+      $query->fields($fields);
+      $query->condition('symbol', $key);
+      $query->execute();
+    }
+  } else {
+    return $data;
+  }
+}

@@ -1,0 +1,14 @@
+currencies.settings:
+  path: '/admin/config/currencies'
+  defaults:
+    _form: '\Drupal\currencies\Form\CurrenciesSettingsForm'
+    _title: 'Currencies settings'
+  requirements:
+    _permission: 'administer currencies'
+# currencies.currency_list:
+#   path: '/currencies'
+#   defaults:
+#     _controller: '\Drupal\currencies\Controller\CurrencyListController::listCurrencies'
+#     _title: 'Currencies'
+#   requirements:
+#     _permission: 'access content'

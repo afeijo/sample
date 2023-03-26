@@ -1,0 +1,5 @@
+services:
+  currencies.currency_converter:
+    class: Drupal\currencies\CurrencyConverter
+    arguments: ['@database']
+    # arguments: ['@currency_rates.currency_rates_manager']

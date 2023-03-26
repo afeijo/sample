@@ -1,0 +1,7 @@
+currencies.settings:
+  title: 'Currencies'
+  route_name: currencies.settings
+  parent: system.admin_config_services
+  weight: 0
+  description: 'Configure currencies settings.'
+  expanded: true

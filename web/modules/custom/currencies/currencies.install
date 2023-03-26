@@ -1,0 +1,57 @@
+<?php
+
+function currencies_install () {
+  // Create custom table.
+  $schema = currencies_schema();
+  \Drupal::database()->schema()->createTable('currencies', $schema['currencies']);
+}
+
+function currencies_uninstall() {
+  // Remove custom table when module is uninstalled.
+  \Drupal::database()->schema()->dropTable('currencies');
+}
+
+function currencies_schema() {
+  $schema['currencies'] = [
+    'description' => 'Stores Currency Symbols and Rates',
+    'fields' => [
+      'cid' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'symbol' => [
+        'type' => 'varchar',
+        'length' => 30,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The currency symbol',
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The currency name',
+      ],
+      'rate' => [
+        'type' => 'float',
+        'not null' => TRUE,
+        'default' => 0.00,
+        'description' => 'The exchange rate of the currency',
+      ],
+      'updated' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The timestamp of the last update',
+      ],
+    ],
+    'primary key' => ['cid'],
+    'unique keys' => [
+      'symbol' => ['symbol'],
+    ],
+  ];
+
+  return $schema;
+}
