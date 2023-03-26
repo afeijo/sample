@@ -25,10 +25,12 @@ indb:
 	docker exec -it ${PHP}-db bash
 
 export:
-	docker exec ${PHP} mysqldump ${MYSQL_DATABASE} -hdb -u${MYSQL_USER} -p${MYSQL_PASSWORD} > db/latest.backup
+	docker exec ${PHP} mysqldump ${MYSQL_DATABASE} -hdb -u${MYSQL_USER} -p${MYSQL_PASSWORD} --column-statistics=0 > database/drupal.sql;gzip -f database/*.sql
 import:
-	docker cp *.sql ${PHP}-db:.
-	docker exec -i ${PHP}-db bash -c 'cat *.sql | mysql ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD}'
+	@gunzip -f database/*.gz
+	@docker cp *.sql ${PHP}-db:.
+	@gzip /database.*sql &
+	@docker exec -i ${PHP}-db bash -c 'cat *.sql | mysql ${MYSQL_DATABASE} -u${MYSQL_USER} -p${MYSQL_PASSWORD};rm *.sql'
 	@make uli
 	@make cr
 

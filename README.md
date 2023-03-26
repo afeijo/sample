@@ -18,6 +18,8 @@ https://github.com/afeijo
 - make up
 - make in
 - make indb
+- make import
+- make export
 
 ----
 
