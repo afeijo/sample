@@ -130,7 +130,7 @@
   border-top: 1px solid;
   opacity: 0.25;
 }
-.ck-content h6, .ck-content .h6, .ck-content h5, .ck-content .h5, .ck-content h4, .ck-content .h4, .ck-content h3, .ck-content .h3, .ck-content h2, .ck-content .h2, .ck-content h1, .ck-content .h1 {
+.ck-content h6, .ck-content .form-wrapper.accordion .accordion-item h2, .ck-content .form-wrapper.accordion .accordion-item .h2, .ck-content .h6, .ck-content h5, .ck-content .h5, .ck-content h4, .ck-content .h4, .ck-content h3, .ck-content .h3, .ck-content h2, .ck-content .h2, .ck-content h1, .ck-content .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -171,7 +171,7 @@
 .ck-content h5, .ck-content .h5 {
   font-size: 1.25rem;
 }
-.ck-content h6, .ck-content .h6 {
+.ck-content h6, .ck-content .form-wrapper.accordion .accordion-item h2, .ck-content .form-wrapper.accordion .accordion-item .h2, .ck-content .h6 {
   font-size: 1rem;
 }
 .ck-content p {
@@ -7071,7 +7071,7 @@ a > .ck-content code {
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
 }
-.ck-content .my-3 {
+.ck-content .my-3, .ck-content .form-wrapper.accordion .accordion-item {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important;
 }
@@ -10165,6 +10165,9 @@ a > .ck-content code {
 .ck-content .ckeditor-buttons .cke_button_icon img {
   vertical-align: initial;
 }
+.ck-content button.link {
+  color: #003CC5;
+}
 .ck-content .button--small {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
@@ -10424,6 +10427,12 @@ a > .ck-content code {
 }
 .ck-content .webform-dropbutton .dropbutton-wrapper .dropbutton-widget {
   background-color: #fff;
+}
+.ck-content .form-type-datetime label {
+  display: block;
+}
+.ck-content .form-type-datetime.webform-element--title-inline label, .ck-content .form-type-datetime[class$=-title-after] label {
+  display: inline-block;
 }
 .ck-content .paragraph-type-label,
 .ck-content .paragraph-type-title {

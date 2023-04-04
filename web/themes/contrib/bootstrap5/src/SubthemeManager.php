@@ -217,15 +217,12 @@ class SubthemeManager {
       $infoYml['name'] = $themeName;
       $infoYml['description'] = $themeName . ' subtheme based on Bootstrap 5 theme.';
       $infoYml['base theme'] = 'bootstrap5';
-      $infoYml['bootstrap5/global-styling'] = [
-        'css' => [
-          'theme' => [
-            'css/style.css' => 'false',
-          ],
-        ],
-      ];
+
       $infoYml['libraries'] = [];
       $infoYml['libraries'][] = $themeMName . '/global-styling';
+      $infoYml['libraries-override'] = [
+        'bootstrap5/global-styling' => false,
+      ];
 
       foreach ([
         'version',

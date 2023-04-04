@@ -107,7 +107,7 @@ hr {
   opacity: 0.25;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+h6, .form-wrapper.accordion .accordion-item h2, .form-wrapper.accordion .accordion-item .h2, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -154,7 +154,7 @@ h5, .h5 {
   font-size: 1.25rem;
 }
 
-h6, .h6 {
+h6, .form-wrapper.accordion .accordion-item h2, .form-wrapper.accordion .accordion-item .h2, .h6 {
   font-size: 1rem;
 }
 
@@ -7642,7 +7642,7 @@ textarea.form-control-lg {
   margin-bottom: 0.5rem !important;
 }
 
-.my-3 {
+.my-3, .form-wrapper.accordion .accordion-item {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important;
 }
@@ -10908,6 +10908,10 @@ textarea.form-control-lg {
   vertical-align: initial;
 }
 
+button.link {
+  color: #003CC5;
+}
+
 .button--small {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
@@ -11198,6 +11202,13 @@ td > .form-item {
 
 .webform-dropbutton .dropbutton-wrapper .dropbutton-widget {
   background-color: #fff;
+}
+
+.form-type-datetime label {
+  display: block;
+}
+.form-type-datetime.webform-element--title-inline label, .form-type-datetime[class$=-title-after] label {
+  display: inline-block;
 }
 
 .paragraph-type-label,
