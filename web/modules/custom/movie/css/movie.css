@@ -1,0 +1,18 @@
+.field--type-string:first-child,
+.field--type-datetime,
+.field--type-entity-reference {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  margin: 0 1%;
+}
+.field--type-string:first input {
+  max-width: 90%;
+}
+.field--type-entity-reference select {
+  min-width: 70%;
+}
+
+.field--name-description {
+  width: 100%;
+}

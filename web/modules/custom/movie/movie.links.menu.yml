@@ -1,0 +1,10 @@
+entity.movie.settings:
+  title: 'Movie'
+  description: 'Configure a Movie entity type.'
+  route_name:  entity.movie.settings
+  parent: system.admin_structure
+entity.movie.collection:
+  title: 'Movies'
+  description: 'List of movies.'
+  route_name: entity.movie.collection
+  parent: system.admin_content

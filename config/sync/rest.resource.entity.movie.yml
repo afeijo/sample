@@ -1,0 +1,38 @@
+uuid: 7b1d764c-ddd2-4207-a112-c1f494bfe5de
+langcode: en
+status: true
+dependencies:
+  module:
+    - movie
+    - serialization
+    - user
+_core:
+  default_config_hash: QmlVFwuQ9Sh2KUYqWLR86wLXAIZrxrmDqMySktKjBKM
+id: entity.movie
+plugin_id: 'entity:movie'
+granularity: method
+configuration:
+  GET:
+    supported_formats:
+      - json
+      - xml
+    supported_auth:
+      - cookie
+  POST:
+    supported_formats:
+      - json
+      - xml
+    supported_auth:
+      - cookie
+  PATCH:
+    supported_formats:
+      - json
+      - xml
+    supported_auth:
+      - cookie
+  DELETE:
+    supported_formats:
+      - json
+      - xml
+    supported_auth:
+      - cookie

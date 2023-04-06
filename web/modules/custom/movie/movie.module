@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * @file
+ * Provides a movie entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\movie\Entity\Movie;
+use Drupal\user\UserInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function movie_theme() {
+  return [
+    'movie' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+function movie_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (strpos($form_id, 'movie') === 0) {
+    // Add our custom library for all movie forms.
+    $form['#attached']['library'][] = 'movie/movie.library';
+  }
+}
+
+/**
+ * Prepares variables for movie templates.
+ *
+ * Default template: movie.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the movie information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_movie(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function movie_user_cancel($edit, UserInterface $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish movies.
+      $storage = \Drupal::entityTypeManager()->getStorage('movie');
+      $movie_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->execute();
+      foreach ($storage->loadMultiple($movie_ids) as $movie) {
+        $movie->set('status', FALSE);
+        $movie->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize movies.
+      $storage = \Drupal::entityTypeManager()->getStorage('movie');
+      $movie_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->execute();
+      foreach ($storage->loadMultiple($movie_ids) as $movie) {
+        $movie->setOwnerId(0);
+        $movie->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function movie_user_predelete(UserInterface $account) {
+  // Delete movies.
+  $storage = \Drupal::entityTypeManager()->getStorage('movie');
+  $movie_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->execute();
+  $movies = $storage->loadMultiple($movie_ids);
+  $storage->delete($movies);
+}

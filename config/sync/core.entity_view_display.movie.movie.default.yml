@@ -1,0 +1,52 @@
+uuid: 229d6244-be17-4e03-85ec-8cd778e0e184
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.movie.movie.field_genre
+    - field.field.movie.movie.field_release_date
+  module:
+    - datetime
+    - movie
+    - text
+id: movie.movie.default
+targetEntityType: movie
+bundle: movie
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_genre:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_release_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

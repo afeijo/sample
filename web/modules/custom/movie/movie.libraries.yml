@@ -1,0 +1,10 @@
+movie.library:
+  version: 1.x
+  css:
+    theme:
+      css/movie.css: {}
+  js:
+    js/movie.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

@@ -1,0 +1,38 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+
+/**
+ * Create our 3 new terms.
+ * @return void
+ */
+function movie_update_10001() {
+  $vid = 'genre';
+  $name = 'Genre';
+  $vocabularies = Vocabulary::loadMultiple();
+  if (!isset($vocabularies[$vid])) {
+    Vocabulary::create(['vid' => $vid, 'description' => '', 'name' => $name, ])->save();
+    $genres = ['Action', 'Comedy', 'Drama'];
+  }
+  foreach($genres as $genre) {
+    movie_new_term('genre', $genre);
+  }
+}
+
+/**
+ * Create new term.
+ * @return void
+ */
+function movie_new_term($vid, $term_name) {
+  $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties(['vid' => $vid, 'name' => $term_name]);
+  if (!$terms) {
+    $new_term = Term::create([
+      'vid' => $vid,
+      'name' => $term_name,
+    ]);
+
+    $new_term->enforceIsNew();
+    $new_term->save();
+  }
+}

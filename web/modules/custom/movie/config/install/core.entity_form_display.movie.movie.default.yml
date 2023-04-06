@@ -1,0 +1,48 @@
+uuid: 9c1b5e7d-3512-4d0a-98b1-0e391e408747
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.movie.movie.field_genre
+    - field.field.movie.movie.field_release_date
+  module:
+    - datetime
+    - movie
+    - text
+id: movie.movie.default
+targetEntityType: movie
+bundle: movie
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_genre:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
