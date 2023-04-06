@@ -34,13 +34,16 @@ module:
   menu_link_content: 0
   menu_ui: 0
   module_filter: 0
+  movie: 0
   mysql: 0
   node: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
+  rest: 0
   search: 0
+  serialization: 0
   shortcut: 0
   system: 0
   taxonomy: 0
