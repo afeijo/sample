@@ -10,8 +10,6 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
  */
 class MovieNormalizer extends ContentEntityNormalizer {
 
-  protected $node;
-
   /**
    * {@inheritdoc}
    */
@@ -26,6 +24,7 @@ class MovieNormalizer extends ContentEntityNormalizer {
     // Get the default normalized output from the parent method.
     $normalized = parent::normalize($entity, $format, $context);
 
+    // The list of fields to unset.
     $unset_list = [
       'uid',
       'uuid',
@@ -38,17 +37,16 @@ class MovieNormalizer extends ContentEntityNormalizer {
       'field_genre',
     ];
 
+    // Add the fields we want to the normalized output.
     $normalized['title'] = $normalized['label'][0]['value'];
     $normalized['release_date'] = $normalized['field_release_date'][0]['value'];
+    $normalized['genre'] = $entity->field_genre->entity->label();
+    $normalized['id'] = $normalized['id'][0]['value'];
 
-    $movie = Movie::load($normalized['id'][0]['value']);
-    $normalized['genre'] = $movie->field_genre->entity->label();
-
+    // Unset the fields we don't want.
     foreach($unset_list as $unset) {
       unset($normalized[$unset]);
     }
-
-    $normalized['id'] = $normalized['id'][0]['value'];
 
     // Return the modified output.
     return $normalized;
