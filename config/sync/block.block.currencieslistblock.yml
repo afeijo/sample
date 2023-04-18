@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - currencies
+    - system
   theme:
     - olivero
 id: currencieslistblock
@@ -188,4 +189,8 @@ settings:
     ZMK: 0
     ZMW: 0
     ZWL: 0
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
