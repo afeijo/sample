@@ -3,7 +3,7 @@ type: module
 description: Allows version-dependent and shared usage of external libraries.
 core_version_requirement: ^8.8 || ^9 || ^10
 
-# Information added by Drupal.org packaging script on 2023-04-13
-version: '4.0.2'
+# Information added by Drupal.org packaging script on 2023-05-15
+version: '4.0.3'
 project: 'libraries'
-datestamp: 1681403005
+datestamp: 1684192645
