@@ -106,7 +106,7 @@ class SwitchUserListHelper {
       $accounts[$anonymous->id()] = $anonymous;
     }
 
-    uasort($accounts, 'static::sortUserList');
+    uasort($accounts, [$this, 'sortUserList']);
 
     return $accounts;
   }

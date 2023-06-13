@@ -15,7 +15,7 @@ include:
 #
 
 variables:
-  PHP_TAG: "8.1"
+  PHP_TAG: "8.2"
   # Disable default phpunit job in favor of the d9/10 variants below.
   DCI_SKIP_PHPUNIT: 1
 
@@ -28,7 +28,7 @@ composer:
     matrix:
       - PHP_TAG: [ "7.4" ]
         DRUPAL_CORE_CONSTRAINT: [ "^9" ]
-      - PHP_TAG: [ "8.1" ]
+      - PHP_TAG: [ "8.2" ]
         DRUPAL_CORE_CONSTRAINT: [ "^10" ]
 
 .phpunit-local:
@@ -51,9 +51,9 @@ phpunit-d9:
 
 phpunit-d10:
   dependencies:
-    - "composer: [8.1, ^10]"
+    - "composer: [8.2, ^10]"
   variables:
-    PHP_TAG: "8.1"
+    PHP_TAG: "8.2"
   extends:
     - .phpunit-base
     - .phpunit-local

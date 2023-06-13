@@ -12,7 +12,6 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\devel_generate\DevelGenerateBase;
 use Drupal\taxonomy\TermInterface;
-use Drush\Utils\StringUtils;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -440,7 +439,7 @@ class TermDevelGenerate extends DevelGenerateBase implements ContainerFactoryPlu
     // Get default settings from the annotated command definition.
     $defaultSettings = $this->getDefaultSettings();
 
-    $bundles = StringUtils::csvToarray($options['bundles']);
+    $bundles = self::csvToarray($options['bundles']);
     if (count($bundles) < 1) {
       throw new \Exception(dt('Please provide a vocabulary machine name (--bundles).'));
     }
@@ -470,13 +469,13 @@ class TermDevelGenerate extends DevelGenerateBase implements ContainerFactoryPlu
       'minimum_depth' => $minimum_depth,
       'maximum_depth' => $maximum_depth,
     ];
-    $add_language = StringUtils::csvToArray($options['languages']);
+    $add_language = self::csvToArray($options['languages']);
     // Intersect with the enabled languages to make sure the language args
     // passed are actually enabled.
     $valid_languages = array_keys($this->languageManager->getLanguages(LanguageInterface::STATE_ALL));
     $values['add_language'] = array_intersect($add_language, $valid_languages);
 
-    $translate_language = StringUtils::csvToArray($options['translations']);
+    $translate_language = self::csvToArray($options['translations']);
     $values['translate_language'] = array_intersect($translate_language, $valid_languages);
     return $values;
   }

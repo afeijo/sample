@@ -6,6 +6,17 @@
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
   .color-#{$state} {
-    @include alert-variant($alert-background, $alert-border, $alert-color);
+    --#{$prefix}alert-color: #{$alert-color};
+    --#{$prefix}alert-bg: #{$alert-color};
+    --#{$prefix}alert-border-color: #{$alert-border};
+
+    // @todo: remove .alert-link  and enable line below when 5.2 is removed.
+    //--#{$prefix}alert-link-color: shade-color($alert-color, 20%);
+
+    .alert-link {
+      color: shade-color($alert-color, 20%);
+    }
   }
+
+
 }

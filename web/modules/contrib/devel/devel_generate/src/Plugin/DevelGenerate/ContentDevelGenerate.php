@@ -20,7 +20,6 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\node\NodeInterface;
 use Drupal\path_alias\PathAliasStorage;
 use Drupal\user\UserStorageInterface;
-use Drush\Utils\StringUtils;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -394,8 +393,8 @@ class ContentDevelGenerate extends DevelGenerateBase implements ContainerFactory
     if (!array_filter($form_state->getValue('node_types'))) {
       $form_state->setErrorByName('node_types', $this->t('Please select at least one content type'));
     }
-    $skip_fields = is_null($form_state->getValue('skip_fields')) ? [] : StringUtils::csvToArray($form_state->getValue('skip_fields'));
-    $base_fields = is_null($form_state->getValue('base_fields')) ? [] : StringUtils::csvToArray($form_state->getValue('base_fields'));
+    $skip_fields = is_null($form_state->getValue('skip_fields')) ? [] : self::csvToArray($form_state->getValue('skip_fields'));
+    $base_fields = is_null($form_state->getValue('base_fields')) ? [] : self::csvToArray($form_state->getValue('base_fields'));
     $form_state->setValue('skip_fields', $skip_fields);
     $form_state->setValue('base_fields', $base_fields);
   }
@@ -537,20 +536,20 @@ class ContentDevelGenerate extends DevelGenerateBase implements ContainerFactory
    * {@inheritdoc}
    */
   public function validateDrushParams(array $args, array $options = []) {
-    $add_language = StringUtils::csvToArray($options['languages']);
+    $add_language = self::csvToArray($options['languages']);
     // Intersect with the enabled languages to make sure the language args
     // passed are actually enabled.
     $valid_languages = array_keys($this->languageManager->getLanguages(LanguageInterface::STATE_ALL));
     $values['add_language'] = array_intersect($add_language, $valid_languages);
 
-    $translate_language = StringUtils::csvToArray($options['translations']);
+    $translate_language = self::csvToArray($options['translations']);
     $values['translate_language'] = array_intersect($translate_language, $valid_languages);
 
     $values['add_type_label'] = $options['add-type-label'];
     $values['kill'] = $options['kill'];
     $values['feedback'] = $options['feedback'];
-    $values['skip_fields'] = is_null($options['skip-fields']) ? [] : StringUtils::csvToArray($options['skip-fields']);
-    $values['base_fields'] = is_null($options['base-fields']) ? [] : StringUtils::csvToArray($options['base-fields']);
+    $values['skip_fields'] = is_null($options['skip-fields']) ? [] : self::csvToArray($options['skip-fields']);
+    $values['base_fields'] = is_null($options['base-fields']) ? [] : self::csvToArray($options['base-fields']);
     $values['title_length'] = 6;
     $values['num'] = array_shift($args);
     $values['max_comments'] = array_shift($args);
@@ -559,7 +558,7 @@ class ContentDevelGenerate extends DevelGenerateBase implements ContainerFactory
 
     $all_types = array_keys(node_type_get_names());
     $default_types = array_intersect(['page', 'article'], $all_types);
-    $selected_types = StringUtils::csvToArray($options['bundles'] ?: $default_types);
+    $selected_types = self::csvToArray($options['bundles'] ?: $default_types);
 
     if (empty($selected_types)) {
       throw new \Exception(dt('No content types available'));

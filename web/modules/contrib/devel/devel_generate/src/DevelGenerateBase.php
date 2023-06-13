@@ -304,4 +304,26 @@ abstract class DevelGenerateBase extends PluginBase implements DevelGenerateBase
     return $add_language[array_rand($add_language)];
   }
 
+  /**
+   * Convert a csv string into an array of items.
+   *
+   * Borrowed from Drush.
+   *
+   * @param string $args
+   *   A simple csv string; e.g. 'a,b,c'
+   *   or a simple list of items; e.g. array('a','b','c')
+   *   or some combination; e.g. array('a,b','c') or array('a,','b,','c,').
+   */
+  public static function csvToArray($args): array {
+    //
+    // 1: implode(',',$args) converts from array('a,','b,','c,') to 'a,,b,,c,'
+    // 2: explode(',', ...) converts to array('a','','b','','c','')
+    // 3: array_filter(...) removes the empty items
+    // 4: array_map(...) trims extra whitespace from each item
+    // (handles csv strings with extra whitespace, e.g. 'a, b, c')
+    //
+    $args = is_array($args) ? implode(',', array_map('strval', $args)) : (string) $args;
+    return array_map('trim', array_filter(explode(',', $args)));
+  }
+
 }
