@@ -1,9 +1,9 @@
 name: Libraries
 type: module
 description: Allows version-dependent and shared usage of external libraries.
-core_version_requirement: ^8.8 || ^9 || ^10
+core_version_requirement: ^9.4 || ^10
 
-# Information added by Drupal.org packaging script on 2023-05-15
-version: '4.0.3'
+# Information added by Drupal.org packaging script on 2023-06-17
+version: '4.0.4'
 project: 'libraries'
-datestamp: 1684192645
+datestamp: 1687020891
