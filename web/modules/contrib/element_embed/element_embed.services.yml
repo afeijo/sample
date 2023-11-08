@@ -1,4 +1,0 @@
-services:
-  plugin.manager.embeddable_element:
-    class: Drupal\element_embed\EmbeddableElementManager
-    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']

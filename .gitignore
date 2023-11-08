@@ -1,6 +1,7 @@
 # Ignore core files
 vendor
 web/core
+web/*/contrib
 
 # Ignore configuration files that may contain sensitive information.
 web/sites/*/settings.local.php

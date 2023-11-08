@@ -1,8 +1,0 @@
-{
-    "name": "drupal/element_embed",
-    "description": "Provides ability to embed render elements in WYSIWYG editors.",
-    "type": "drupal-module",
-    "require": {
-        "drupal/embed": "^1.5"
-    }
-}
