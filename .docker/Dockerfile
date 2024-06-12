@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 LABEL MAINTAINER=alessandrofeijo
 
@@ -11,19 +11,19 @@ RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update && apt-get install -yq --no-install-recommends \
   apt-utils curl git tig autoconf \
   # Install apache
-  apache2 libapache2-mod-php8.2 \
-  # Install php 8.2
-  php8.2-cli php8.2-curl php8.2-apc \
-  php8.2-fpm php8.2-gd php8.2-ldap \
-  php8.2-memcache libmemcached-dev php-dev \
-  php8.2-mbstring php8.2-mysql php8.2-soap \
-  php8.2-sqlite3 php8.2-xml php8.2-zip \
-  php8.2-intl php-imagick php-geoip php8.2-imap \
+apache2 libapache2-mod-php8.3 \
+  # Install php 8.3
+  php8.3-cli php8.3-curl php8.3-apc \
+  php8.3-fpm php8.3-gd php8.3-ldap \
+  php8.3-memcache libmemcached-dev php-dev \
+  php8.3-mbstring php8.3-mysql php8.3-soap \
+  php8.3-sqlite3 php8.3-xml php8.3-zip \
+  php8.3-intl php-imagick php-geoip php8.3-imap \
   php-uploadprogress libjpeg-dev php-pear \
   # Install tools
   openssl mysql-client \
   locales ca-certificates
-RUN update-alternatives --set php /usr/bin/php8.2
+RUN update-alternatives --set php /usr/bin/php8.3
 RUN apt-get install -y vim wget tree unzip gnupg2 patch htop make redis
 RUN pecl i apcu
 
@@ -48,8 +48,8 @@ RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/bin/drupal
 RUN locale-gen pt_BR.UTF-8 en_US.UTF-8 en_GB.UTF-8
 
 RUN a2enmod rewrite headers ssl proxy_fcgi setenvif
-RUN a2enconf php8.2-fpm
-RUN systemctl enable php8.2-fpm
+RUN a2enconf php8.3-fpm
+RUN systemctl enable php8.3-fpm
 
 RUN apt-get -yq install libmcrypt-dev libzip-dev libjpeg-dev
 RUN apt-get -y upgrade && apt-get -y autoclean && apt-get -y autoremove
@@ -77,14 +77,14 @@ RUN cd ~ \
 RUN echo -e "\nalias dr='drush'" >> ~/.bash_aliases
 
 COPY .docker/apache-drupal.conf /etc/apache2/sites-enabled/000-default.conf
-COPY .docker/php.ini /etc/php/8.2/apache2/conf.d/
-COPY .docker/opcache.ini /etc/php/8.2/apache2/conf.d/
-RUN echo "upload_max_filesize = 100M" >> /etc/php/8.2/apache2/php.ini
-RUN echo "post_max_size = 100M" >> /etc/php/8.2/apache2/php.ini
+COPY .docker/php.ini /etc/php/8.3/apache2/conf.d/
+COPY .docker/opcache.ini /etc/php/8.3/apache2/conf.d/
+RUN echo "upload_max_filesize = 100M" >> /etc/php/8.3/apache2/php.ini
+RUN echo "post_max_size = 100M" >> /etc/php/8.3/apache2/php.ini
 
 WORKDIR /app/web
 
 RUN mkdir -p ../private ../config/sync sites/default/files/translations
 RUN chown www-data -R ../private ../config sites/default/files/translations
 
-CMD cron;service redis-server start;service php8.2-fpm start;apachectl -D FOREGROUND
+CMD cron;service redis-server start;service php8.3-fpm start;apachectl -D FOREGROUND
