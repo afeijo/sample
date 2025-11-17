@@ -25,6 +25,8 @@
         "drupal/element_embed": "^1.0@alpha",
         "drupal/embed": "^1.6",
         "drupal/fontawesome": "*",
+        "drupal/gin": "^4.1",
+        "drupal/gin_toolbar": "^2.1",
         "drupal/libraries": "^4.0",
         "drupal/module_filter": "*",
         "drupal/paragraphs": "*",
