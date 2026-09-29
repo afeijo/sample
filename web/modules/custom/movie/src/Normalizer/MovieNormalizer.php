@@ -20,7 +20,7 @@ class MovieNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function normalize($entity, $format = NULL, array $context = []): array|string|int|float|bool|\ArrayObject|NULL {
+  public function normalize($entity, $format = NULL, array $context = []): array {
     // Get the default normalized output from the parent method.
     $normalized = parent::normalize($entity, $format, $context);
 
@@ -44,7 +44,7 @@ class MovieNormalizer extends ContentEntityNormalizer {
     $normalized['id'] = $normalized['id'][0]['value'];
 
     // Unset the fields we don't want.
-    foreach($unset_list as $unset) {
+    foreach ($unset_list as $unset) {
       unset($normalized[$unset]);
     }
 

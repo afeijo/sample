@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Genre
+vid: genre
+description: 'Movie genres.'
+weight: 0

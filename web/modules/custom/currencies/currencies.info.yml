@@ -1,5 +1,5 @@
 name: Currencies
 type: module
 description: 'Provides a currencies converter.'
-core_version_requirement: ^9.3 || ^10
+core_version_requirement: ^10 || ^11 || ^12
 package: Feijo

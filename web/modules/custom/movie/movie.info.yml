@@ -2,4 +2,13 @@ name: My Movies
 type: module
 description: 'Provides a movie content type.'
 package: Custom
-core_version_requirement: ^9.5 || ^10
+core_version_requirement: ^10 || ^11 || ^12
+dependencies:
+  - drupal:datetime
+  - drupal:field
+  - drupal:options
+  - drupal:rest
+  - drupal:serialization
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:views

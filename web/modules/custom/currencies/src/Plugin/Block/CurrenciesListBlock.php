@@ -98,17 +98,14 @@ class CurrenciesListBlock extends BlockBase implements ContainerFactoryPluginInt
       ->execute()
       ->fetchAllKeyed();
     // Reposition USD and EUR to the top of the array
-    $options = [
-      'USD' => $options['USD'],
-      'EUR' => $options['EUR'],
-      ] + $options;
+    $options = array_intersect_key($options, ['USD' => TRUE, 'EUR' => TRUE]) + $options;
 
     $form['currencies'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Currencies'),
       '#description' => $this->t('Select which currencies to display.'),
       '#options' => $options,
-      '#default_value' => $config['currencies'] ?: ['USD', 'BRL', 'EUR', 'GBP', 'JPY'],
+      '#default_value' => $config['currencies'] ?? ['USD', 'BRL', 'EUR', 'GBP', 'JPY'],
       '#prefix' => $this->t('<style>#edit-settings-currencies{height: 15em; overflow-y: scroll;}#edit-settings-currencies .form-item{float:left;width:15em;}</style>'),
     ];
 
