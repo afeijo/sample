@@ -7,6 +7,8 @@ dependencies:
   module:
     - datetime
     - movie
+_core:
+  default_config_hash: BEY2KqqNZXwVVs-yX1qLBr7ncmyDWfpHaLCf4UUmSOE
 id: movie.movie.field_release_date
 field_name: field_release_date
 entity_type: movie

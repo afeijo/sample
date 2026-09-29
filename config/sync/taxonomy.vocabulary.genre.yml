@@ -1,8 +1,11 @@
-uuid: fc530027-80ba-4839-8d4b-0519252b9979
+uuid: 46fc6e4e-5aee-48db-a39e-110ba33b0312
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: bxDzSraI95UyR0LiLj2BUr1Aeq3nDsncnk1-Ssgjn8U
 name: Genre
 vid: genre
-description: ''
+description: 'Movie genres.'
 weight: 0
+new_revision: false

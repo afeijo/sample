@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: P3-WOd7u8h6z_VP2aOReNonyN9BkvsreaeuNYtxfqMM
+enabled: true
+minify_css: false
+preserve_media: true
+include_head_styles: true
+head_style_selectors:
+  - 'head style[data-cke]'
+  - 'head style[data-mce-bogus]'

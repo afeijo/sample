@@ -7,6 +7,8 @@ dependencies:
     - taxonomy.vocabulary.genre
   module:
     - movie
+_core:
+  default_config_hash: 5xKjf3w9gsIDuDGc92s1dipXRFJHldVlBFfYTKPvevk
 id: movie.movie.field_genre
 field_name: field_genre
 entity_type: movie

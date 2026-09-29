@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: ZysZ8E9RiV8ybsPcFM-ovOYJDg3t7OpP02Ctm29hIVk
+colors:
+  ocean: '#ffffff'
+  land: '#595959'
+  hover: '#404040'
+  selected: '#b22222'
+  selected_stroke: '#7f1d1d'
+  border: '#ffffff'

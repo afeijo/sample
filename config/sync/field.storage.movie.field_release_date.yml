@@ -5,6 +5,8 @@ dependencies:
   module:
     - datetime
     - movie
+_core:
+  default_config_hash: kc66ToojfaWGqvMTyyAzcOLrmzfeX03V0k_24XMrAfk
 id: movie.field_release_date
 field_name: field_release_date
 entity_type: movie

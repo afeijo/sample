@@ -9,6 +9,8 @@ dependencies:
     - datetime
     - movie
     - text
+_core:
+  default_config_hash: mOMWSqyBpgfI5dNQdIGLz76cYrdmgSMP7rKUmctMl0E
 id: movie.movie.default
 targetEntityType: movie
 bundle: movie

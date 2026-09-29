@@ -5,6 +5,8 @@ dependencies:
   module:
     - movie
     - taxonomy
+_core:
+  default_config_hash: Ezxot5-wyNTCJqnm3x4TMSoLhWxqC5M3fXgehZGfUeU
 id: movie.field_genre
 field_name: field_genre
 entity_type: movie

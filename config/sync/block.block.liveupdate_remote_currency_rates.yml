@@ -1,0 +1,28 @@
+uuid: df179a46-053c-44c5-be75-082291dc5392
+langcode: en
+status: true
+dependencies:
+  module:
+    - liveupdate_remote
+    - system
+  theme:
+    - olivero
+id: liveupdate_remote_currency_rates
+theme: olivero
+region: content
+weight: 2
+provider: null
+plugin: liveupdate_remote_table
+settings:
+  id: liveupdate_remote_table
+  label: 'Live currency rates'
+  label_display: visible
+  provider: liveupdate_remote
+  source: currency_rates
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: |-
+      /sample/liveupdate-remote
+      /liveupdate/remote/*

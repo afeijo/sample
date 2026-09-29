@@ -27,10 +27,13 @@ module:
   help: 0
   history: 0
   image: 0
+  inline_style_aggregation: 0
   jquery_ui: 0
   jquery_ui_autocomplete: 0
   jquery_ui_menu: 0
   link: 0
+  liveupdate: 0
+  liveupdate_remote: 0
   menu_link_content: 0
   menu_ui: 0
   module_filter: 0
@@ -38,16 +41,21 @@ module:
   mysql: 0
   node: 0
   options: 0
+  page_attributes: 0
   page_cache: 0
   path: 0
   path_alias: 0
   rest: 0
+  sample_showcase: 0
   search: 0
+  search_help: 0
+  search_node: 0
   serialization: 0
   shortcut: 0
   system: 0
   taxonomy: 0
   text: 0
+  timezone_picker: 0
   token: 0
   toolbar: 0
   tour: 0

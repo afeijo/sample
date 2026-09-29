@@ -1,0 +1,21 @@
+uuid: fc080ebc-db1e-43b8-ac7e-f39c7b5acc91
+langcode: en
+status: true
+dependencies: {  }
+id: currency_rates
+label: 'Currency rates'
+url: 'https://api.frankfurter.app/latest?from=USD&to=BRL,EUR,GBP'
+cache_ttl: 300
+row_limit: 10
+root_path: rates
+columns:
+  -
+    label: Currency
+    path: _key
+  -
+    label: Rate
+    path: _value
+indicator: bar
+show_refresh: true
+status_position: bottom
+display_style: compact
