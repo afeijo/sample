@@ -1,6 +1,6 @@
 uuid: 8c000214-50cf-45e3-9458-d8df8c45ec6a
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - currencies

@@ -31,6 +31,8 @@ module:
   jquery_ui: 0
   jquery_ui_autocomplete: 0
   jquery_ui_menu: 0
+  layout_builder: 0
+  layout_discovery: 0
   link: 0
   liveupdate: 0
   liveupdate_remote: 0
@@ -39,6 +41,7 @@ module:
   module_filter: 0
   movie: 0
   mysql: 0
+  navigation: 0
   node: 0
   options: 0
   page_attributes: 0
