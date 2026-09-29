@@ -1,0 +1,102 @@
+.sample-showcase {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sample-showcase__intro {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.sample-showcase__intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1;
+}
+
+.sample-showcase__intro p {
+  max-width: 760px;
+  font-size: 1.1rem;
+}
+
+.sample-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.sample-showcase__card {
+  display: grid;
+  gap: 10px;
+  min-height: 220px;
+  padding: 20px;
+  border: 1px solid #d7e1ea;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(26, 38, 52, 0.08);
+}
+
+.sample-showcase__card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.sample-showcase__meta {
+  color: #5b6470;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sample-showcase__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-self: end;
+}
+
+.sample-showcase__button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 6px;
+  background: #0b6f85;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sample-showcase__button:hover,
+.sample-showcase__button:focus {
+  background: #084f60;
+  color: #fff;
+}
+
+.sample-showcase__panel {
+  display: grid;
+  gap: 18px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  border-left: 6px solid #0b6f85;
+  background: #f7fafc;
+}
+
+.sample-showcase__panel h1,
+.sample-showcase__panel h2 {
+  margin: 0;
+}
+
+.sample-showcase__list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.sample-showcase__remote {
+  display: grid;
+  gap: 24px;
+}

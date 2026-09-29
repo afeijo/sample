@@ -1,0 +1,47 @@
+sample_showcase.home:
+  path: '/sample'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::home'
+    _title: 'Feijó Sample Site'
+  requirements:
+    _access: 'TRUE'
+
+sample_showcase.liveupdate_remote:
+  path: '/sample/liveupdate-remote'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::liveUpdateRemote'
+    _title: 'LiveUpdate Remote currencies'
+  requirements:
+    _access: 'TRUE'
+
+sample_showcase.page_attributes:
+  path: '/sample/page-attributes'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::pageAttributes'
+    _title: 'Page Attributes'
+  requirements:
+    _access: 'TRUE'
+
+sample_showcase.timezone_picker:
+  path: '/sample/timezone-picker'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::timezonePicker'
+    _title: 'Timezone Picker'
+  requirements:
+    _access: 'TRUE'
+
+sample_showcase.inline_style_aggregation:
+  path: '/sample/inline-style-aggregation'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::inlineStyleAggregation'
+    _title: 'Inline Style Aggregation'
+  requirements:
+    _access: 'TRUE'
+
+sample_showcase.currencies:
+  path: '/sample/currencies'
+  defaults:
+    _controller: '\Drupal\sample_showcase\Controller\SampleShowcaseController::currencies'
+    _title: 'Currencies module'
+  requirements:
+    _access: 'TRUE'

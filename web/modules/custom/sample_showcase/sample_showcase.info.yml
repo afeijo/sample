@@ -1,0 +1,13 @@
+name: Sample Showcase
+type: module
+description: 'Showcases the custom and contributed modules used by the sample site.'
+package: Feijo
+core_version_requirement: ^11 || ^12
+dependencies:
+  - drupal:block
+  - drupal:node
+  - liveupdate:liveupdate
+  - liveupdate:liveupdate_remote
+  - inline_style_aggregation:inline_style_aggregation
+  - page_attributes:page_attributes
+  - timezone_picker:timezone_picker

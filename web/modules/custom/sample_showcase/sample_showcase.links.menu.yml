@@ -1,0 +1,11 @@
+sample_showcase.home:
+  title: 'Sample showcase'
+  route_name: sample_showcase.home
+  menu_name: main
+  weight: -10
+
+sample_showcase.liveupdate_remote:
+  title: 'LiveUpdate Remote'
+  route_name: sample_showcase.liveupdate_remote
+  menu_name: main
+  weight: -9

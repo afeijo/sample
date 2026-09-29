@@ -1,0 +1,4 @@
+showcase:
+  css:
+    theme:
+      css/sample-showcase.css: {}
